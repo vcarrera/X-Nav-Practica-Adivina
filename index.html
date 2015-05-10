@@ -1,0 +1,47 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link type="image/png" href='images/G12-RPG-icon.png' rel='icon' type='image/x-icon'/>  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">       
+    <link rel="stylesheet" href="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <title>Adivina dónde está</title>
+  </head>
+  <body>
+    <div id="menu">
+      <span id="mode">
+	<button id="easy">easy 10s</button>
+	<button id="medium">medium 5s</button>
+	<button id="hard">hard 3s</button>
+	<button id="edit">hard 3s</button>
+	<label for="typegame">Type</label>
+	<select name="typegame" id="typegame">
+	  <option>Flags</option>
+	  <option>Food</option>
+	  <option selected="selected">Capitals</option>
+	</select>
+      </span>
+      <span id="count">
+	<button id="github">Connect to github <i class="fa fa-github"></i></button>
+      </span>
+      <div id="polaroid">
+	  <div id="images"></div>
+      </div>
+      <span id="credits">
+	<i class="fa fa-flickr"></i> <a href="https://www.flickr.com">Flickr</a> 
+	<i class="fa fa-leaf"></i> Leaflet 
+	<i class="fa fa-github"></i> Github
+	<img src="images/City-Parliament-icon.png" style="width:20px;height:20px"/> <a href="http://www.iconarchive.com/show/ios7-icons-by-icons8/City-Parliament-icon.html"> City-Parliament-icon </a>
+      </span>
+    </div>
+    <!--Javascript-->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>  
+    <script src="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="js/game.js"></script>    
+  </body>
+</html>
