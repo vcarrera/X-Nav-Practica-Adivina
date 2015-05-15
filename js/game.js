@@ -2,22 +2,41 @@ var result=["octopus in a garage","statue in the park" ,"marcian", "tourist"];
 var resultado=["pulpo en un garaje","estatua en el parque", "marciano", "turista"];
 var type=["Capital","Food", "Flags"];
 
-var greenIcon = L.icon({
-    iconUrl: 'leaf-green.png',
-    shadowUrl: 'leaf-shadow.png',
+function swapPhoto(href) {
+  var req = new XMLHttpRequest();
+  req.open("GET",
+           "http://vcarrera.github.io/X-Nav-Practica-Adivina/gallery/" +
+             href.split("/").pop(),
+           false);
+  req.send(null);
+  if (req.status == 200) {
+    document.getElementById("gallery").innerHTML = req.responseText;
+    setupHistoryClicks();
+    return true;
+  }
+  return false;
+}
 
-    iconSize:     [38, 95], // size of the icon
-    shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
+function addClicker(link) {
+  link.addEventListener("click", function(e) {
+    if (swapPhoto(link.href)) {
+      history.pushState(null, null, link.href);
+      e.preventDefault();
+    }
+  }, true);
+}
 
+function setupHistoryClicks() {
+  addClicker(document.getElementById("photonext"));
+  addClicker(document.getElementById("photoprev"));
+}
 
-//FLICKER 
-var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-$.getJSON( flickerAPI, {
-  tags: tag,
-  tagmode: "any",
-  format: "json"
-})
+window.onload = function() {
+  if (!supports_history_api()) { return; }
+  setupHistoryClicks();
+  window.setTimeout(function() {
+    window.addEventListener("popstate", function(e) {
+      swapPhoto(location.pathname);
+    }, false);
+  }, 1);
+}
