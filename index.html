@@ -20,35 +20,39 @@
   <body>
     <!--MENU-->
     <menu id="menu">
-      <span class="github-fork-ribbon-wrapper left">
+      <span class="hidden-xs github-fork-ribbon-wrapper left">
 	<span class="github-fork-ribbon">
 	  <a href="https://github.com/vcarrera/X-Nav-Practica-Adivina">Folder on GitHub</a>
 	</span>
       </span>
-      <div id="mode" class="centrame">
-	<label for="typegame">Type</label>
-	<select name="typegame" id="typegame">
+      <div id="mode" class="col-xs-12 col-sm-4 centrame">
+	<label class="col-xs-12 col-sm-2" for="typegame">Type</label>
+	<select class="col-xs-12 col-sm-10" name="typegame" id="typegame">
 	  <option>Flags</option>
 	  <option>Food</option>
 	  <option selected="selected">Capitals</option>
 	</select><br>
-	<button id="easy">easy 10s</button><br>
-	<button id="medium">medium 5s</button><br>
-	<button id="hard">hard 3s</button><br>
-	<button id="edit">edit</button>	<br>
+	<button class="col-xs-12 col-sm-12" id="easy">easy 10s</button>
+	<button class="col-xs-12 col-sm-12" id="medium">medium 5s</button>
+	<button class="col-xs-12 col-sm-12" id="hard">hard 3s</button>
+	<button class="col-xs-12 col-sm-12" id="continue">continue</button>
       </div>
     </menu>
     
     <!--JUEGO-->
     <div id="game">
-      <div id="image" class="col-xs-12 col-sm-3 col-lg-3">
+      <div id="image" class="col-xs-12 col-sm-4 col-lg-4">
 	<div id="polaroid">
 	  <div id="images"></div>
 	</div>
 	<div id="ventanilla">
+	  <div id="gamemenu">
+	    <button id="back"> menu <i class="fa fa-undo" ></i></button>
+	    <button class="hidden-sm hidden-lg" id="buttonmap"> map <i class="fa fa-undo" ></i></button>
+	  </div>
 	</div>
       </div>
-      <div id="map" class="col-xs-12 col-sm-9 col-lg-9">
+      <div id="map" class="col-xs-12 col-sm-8 col-lg-8">
       </div>
     </div>
     

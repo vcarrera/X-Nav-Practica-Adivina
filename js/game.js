@@ -26,10 +26,7 @@ function addClicker(link) {
   }, true);
 }
 
-function setupHistoryClicks() {
-  addClicker(document.getElementById("photonext"));
-  addClicker(document.getElementById("photoprev"));
-}
+
 
 window.onload = function() {
   if (!supports_history_api()) { return; }
