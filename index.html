@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/estilomenu.css">
     <link rel="stylesheet" href="css/estilofoto.css">
     <link rel="stylesheet" href="css/leafletgame.css">
+     <link rel="stylesheet" href="css/leafletsolution.css">
     <title>Adivina dónde está</title>
   </head>
   <body>
@@ -42,18 +43,41 @@
     <!--JUEGO-->
     <div id="game">
       <div id="image" class="col-xs-12 col-sm-4 col-lg-4">
+      <output id="score" class="col-xs-12 col-sm-12">
+      </output>
 	<div id="polaroid">
-	  <div id="images"></div>
 	</div>
-	<div id="ventanilla">
+	<div id="window">
 	  <div id="gamemenu">
-	    <button id="back"> menu <i class="fa fa-undo" ></i></button>
-	    <button class="hidden-sm hidden-lg" id="buttonmap"> map <i class="fa fa-undo" ></i></button>
+	    <button id="back"> menu <i class="fa fa-reply" ></i></button>
 	  </div>
 	</div>
       </div>
-      <div id="map" class="col-xs-12 col-sm-8 col-lg-8">
+      <div id="gamemaptop" class="col-xs-12 col-sm-8 col-lg-8">
+	<button class="col-xs-12 hidden-sm hidden-lg" id="photos"> photos <i class="fa fa-plane"></i></button>
       </div>
+      <div id="map" class="col-xs-12 col-sm-8 col-lg-8"></div>
+      <div id="gamemapbottom" class="col-xs-12 col-sm-8 col-lg-8">
+	<button class="col-xs-6 hidden-sm hidden-lg" id="buttonmap"> map-left <i class="fa fa-step-backward"></i></button>
+	<button class="col-xs-6 hidden-sm hidden-lg" id="leftmap"> map-right <i class="fa fa-step-forward"></i></button>
+      </div>
+    </div>
+    
+    <!--solve-->
+    <div id="solve">
+      <div id="finalscore" class="col-xs-12 col-sm-12">
+      </div>
+      <div id="image" class="col-xs-12 col-sm-4 col-lg-4">
+	<div id="polaroid">
+	  <div id="images"></div>
+	</div>
+	<div id="window">
+	  <div id="gamemenu">
+	    <button id="back"> menu <i class="fa fa-reply" ></i></button>
+	  </div>
+	</div>
+      </div>
+      <div id="map2" class="col-xs-12 col-sm-8 col-lg-8"></div>
     </div>
     
     <!--CREDITOS-->
@@ -69,8 +93,8 @@
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>  
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <script src="js/game.js"></script>    
-    <script src="js/flickrgame.js"></script>    
-    <script src="js/leafletgame.js"></script>    
+    <script src="js/game.js"></script>
+    <script src="js/leafletgame.js"></script>   
+    <script src="js/leafletsolution.js"></script>    
   </body>
 </html>

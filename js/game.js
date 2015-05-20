@@ -1,6 +1,8 @@
+var apiflickr='http://api.flickr.com/services/feeds/photos_public.gne?tags=';
 var result=["octopus in a garage","statue in the park" ,"marcian", "tourist"];
-var resultado=["pulpo en un garaje","estatua en el parque", "marciano", "turista"];
-var type=["Capital","Food", "Flags"];
+var juegosjson=["Capitales","Banderas", "Comida"];
+var photo= [];
+var data=[];
 
 function swapPhoto(href) {
   var req = new XMLHttpRequest();
@@ -37,3 +39,25 @@ window.onload = function() {
     }, false);
   }, 1);
 }
+
+
+$(document).ready(function() {
+    switch($('#typegame :selected').text()){
+      case "Flags":
+	apigames=juegosjson[2];
+	break;
+      case "Food":
+	apigames=juegosjson[3];
+	break;
+      default::
+	apigames=juegosjson[1];
+    }
+    $.getJSON('../juegos/'+apigames+'.json', function(d){
+      $.each( d, function( key, tag) {
+	$.getJSON( apiflickr+tag.properties.name+'&tagmode=any&format=json&jsoncallback=?', function(d1){
+	    photo.push(d1.pop().media.m);
+	});
+      });
+      
+     });
+  });
