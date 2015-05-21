@@ -19,6 +19,12 @@
     <title>Adivina dónde está</title>
   </head>
   <body>
+    <!--miscelaneous-->
+    <div id="miscelaneous">
+      <button class="col-xs-2" id="helpbutton"><i class="fa fa-info-circle"></i></button>
+      <button class="col-xs-2" id="audio" onclick="changesound()"><i class="fa fa-volume-up"></i></button>
+      <audio class="col-xs-8" src="audio/Item Shop_0.mp3" loop controls>Around The World MSX-Snabisch</audio>
+    </div>
     <!--MENU-->
     <menu id="menu">
       <span class="hidden-xs github-fork-ribbon-wrapper left">
@@ -33,9 +39,9 @@
 	  <option>Food</option>
 	  <option selected="selected">Capitals</option>
 	</select><br>
-	<button class="col-xs-12 col-sm-12" id="easy">easy 10s</button>
-	<button class="col-xs-12 col-sm-12" id="medium">medium 5s</button>
-	<button class="col-xs-12 col-sm-12" id="hard">hard 3s</button>
+	<button class="col-xs-12 col-sm-12" id="easy">easy</button>
+	<button class="col-xs-12 col-sm-12" id="medium">medium</button>
+	<button class="col-xs-12 col-sm-12" id="hard">hard</button>
 	<button class="col-xs-12 col-sm-12" id="continue">continue</button>
       </div>
     </menu>
@@ -43,18 +49,18 @@
     <!--JUEGO-->
     <div id="game">
       <div id="image" class="col-xs-12 col-sm-4 col-lg-4">
-      <output id="score" class="col-xs-12 col-sm-12">
       </output>
 	<div id="polaroid">
 	</div>
 	<div id="window">
 	  <div id="gamemenu">
 	    <button id="back"> menu <i class="fa fa-reply" ></i></button>
+	    <button id="tomap"> map <i class="fa fa-plane"></i></button>
 	  </div>
 	</div>
       </div>
       <div id="gamemaptop" class="col-xs-12 col-sm-8 col-lg-8">
-	<button class="col-xs-12 hidden-sm hidden-lg" id="photos"> photos <i class="fa fa-plane"></i></button>
+	<button class="col-xs-12 hidden-sm hidden-lg" id="photos"> photos<i class="fa fa-camera"></i></button>
       </div>
       <div id="map" class="col-xs-12 col-sm-8 col-lg-8"></div>
       <div id="gamemapbottom" class="col-xs-12 col-sm-8 col-lg-8">
@@ -65,29 +71,27 @@
     
     <!--solve-->
     <div id="solve">
-      <div id="finalscore" class="col-xs-12 col-sm-12">
-      </div>
-      <div id="image" class="col-xs-12 col-sm-4 col-lg-4">
-	<div id="polaroid">
-	  <div id="images"></div>
-	</div>
-	<div id="window">
-	  <div id="gamemenu">
-	    <button id="back"> menu <i class="fa fa-reply" ></i></button>
-	  </div>
-	</div>
+      <div id="finalscore" class="col-xs-12 col-sm-4">
       </div>
       <div id="map2" class="col-xs-12 col-sm-8 col-lg-8"></div>
     </div>
-    
-    <!--CREDITOS-->
-    <div id="credits">
-      <i class="fa fa-flickr"></i> <a href="https://www.flickr.com">Flickr</a> 
-      <i class="fa fa-leaf"></i> Leaflet http://leaflet-extras.github.io/leaflet-providers/preview/
-      <i class="fa fa-github"></i> Github
-      <img src="images/City-Parliament-icon.png" style="width:20px;height:20px"/> <a href="http://www.iconarchive.com/show/ios7-icons-by-icons8/City-Parliament-icon.html"> City-Parliament-icon </a>
-    </div>  
-        
+    <div id="help">
+      <!--HOW PLAY-->
+      <div id="how">
+	<h2>How play:</h2>
+	<h3>Adivina dónde está (Find where is it)</h3>
+	Is a geolocalization game. The game show a photo, and you have to select the city of the picture in the map.<br>
+	There are 3 diferents dificulties: easy , medium and hard; this change the time for choose the city.<br>
+	The type of game  only change the class of the pictures.
+      </div>
+      <!--CREDITOS-->
+      <div id="credits">
+	<i class="fa fa-flickr"></i> <a href="https://www.flickr.com">Flickr</a> 
+	<i class="fa fa-leaf"></i> Leaflet http://leaflet-extras.github.io/leaflet-providers/preview/
+	<i class="fa fa-github"></i> Github
+	<img src="images/City-Parliament-icon.png" style="width:20px;height:20px"/> <a href="http://www.iconarchive.com/show/ios7-icons-by-icons8/City-Parliament-icon.html"> City-Parliament-icon </a>
+      </div>  
+    </div>   
     <!--Javascript-->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

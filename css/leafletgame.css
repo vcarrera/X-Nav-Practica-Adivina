@@ -1,0 +1,21 @@
+
+#game{
+  background:#C2E8FF;
+}
+#gamemaptop{
+  height: 5vh; 
+  padding:0;
+  margin:0;
+  background:#C2E8FF;
+}
+#map { 
+  height: 90vh; 
+  padding:0;
+  margin:0;
+}
+#gamemapbottom{
+  height: 5vh; 
+  padding:0;
+  margin:0;
+  background:#C2E8FF;
+}

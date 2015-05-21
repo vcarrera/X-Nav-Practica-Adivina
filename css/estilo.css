@@ -13,3 +13,13 @@ html, body{
      transform: translate(-50%, -50%);   
 } 
 
+
+#miscelaneous{
+    float: right;
+    padding:5px;
+}
+
+#help{
+  width:100%;
+  height:100vh;
+}

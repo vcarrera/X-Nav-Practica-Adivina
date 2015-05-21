@@ -1,0 +1,25 @@
+#image{
+   height:100vh;
+   background:black;
+}
+#polaroid{
+  position: absolute;
+  background-size: 100% 100%;
+  z-index:10;
+  width:100%;
+  height:100%;
+}
+#window{
+  position: relative;
+  background-image:url("../images/ventanilla.png");
+  background-size: 100% 100%;
+  z-index:20;
+  width:100%;
+  height:100%;
+}
+#gamemenu{
+  position: absolute;
+  z-index:30;
+  bottom:2vh;
+  clear: both; 
+}

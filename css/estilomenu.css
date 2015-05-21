@@ -1,0 +1,65 @@
+#menu{
+  background-image:url("../images/travel-150-01.jpg");
+  background-size: 100% 100%;
+  width:100%;
+  height:100vh;
+  padding:0;
+  margin:0;
+ 
+}
+
+#modo{
+  opacity: 0;
+}
+
+
+#menu button, select{
+    height:15vh;
+    opacity: 0.8;
+    text-align:center;
+}
+
+
+
+
+
+.github-fork-ribbon-wrapper.left {
+    left: 0;
+}
+.github-fork-ribbon-wrapper {
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 150px;
+}
+
+.github-fork-ribbon-wrapper.left .github-fork-ribbon {
+    left: -43px;
+    top: 42px;
+    transform: rotate(-45deg);
+}
+.github-fork-ribbon {
+    background-color: #a00;
+    background-image: -moz-linear-gradient(center top , rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+    padding: 2px 0;
+    position: absolute;
+    z-index: 9999;
+}
+.github-fork-ribbon a {
+    border-color: rgba(255, 255, 255, 0.7);
+    border-style: dotted;
+    border-width: 1px 0;
+    color: white;
+    display: inline-block;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    padding: 2px 0;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+    width: 200px;
+}
