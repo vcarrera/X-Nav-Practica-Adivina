@@ -53,9 +53,9 @@
 	<div id="polaroid">
 	</div>
 	<div id="window">
-	  <div id="gamemenu">
-	    <button id="back"> menu <i class="fa fa-reply" ></i></button>
-	    <button id="tomap"> map <i class="fa fa-plane"></i></button>
+	  <div id="gamemenu" class="col-xs-12 col-sm-12 col-lg-12">
+	    <button class="col-xs-6 col-sm-12 col-lg-12 back"> menu <i class="fa fa-reply" ></i></button>
+	    <button class="col-xs-6 hidden-sm hidden-lg" id="tomap"> map <i class="fa fa-plane"></i></button>
 	  </div>
 	</div>
       </div>
@@ -71,7 +71,12 @@
     
     <!--solve-->
     <div id="solve">
-      <div id="finalscore" class="col-xs-12 col-sm-4">
+      <div id="endscore" class="col-xs-12 col-sm-4">
+	<div id="gamemenu" class="col-xs-12 col-sm-12 col-lg-12">
+	  <button class="col-xs-6 " id="backphoto"> <i class="fa fa-arrow-left"></i></button>
+	  <button class="col-xs-6 " id="nextphoto"><i class="fa fa-arrow-right"></i></button>
+	  <button class="col-xs-6 col-sm-12 col-lg-12 back"> menu <i class="fa fa-reply" ></i></button>
+	</div>
       </div>
       <div id="map2" class="col-xs-12 col-sm-8 col-lg-8"></div>
     </div>
@@ -79,8 +84,9 @@
       <!--HOW PLAY-->
       <div id="how">
 	<h2>How play:</h2>
-	<h3>Adivina dónde está (Find where is it)</h3>
-	Is a geolocalization game. The game show a photo, and you have to select the city of the picture in the map.<br>
+	<h3>Adivina dónde está<br>(Find where is it)</h3>
+	Is a geolocalization game.<br>
+	The game show a photo, and you have to select the city of the picture in the map.<br>
 	There are 3 diferents dificulties: easy , medium and hard; this change the time for choose the city.<br>
 	The type of game  only change the class of the pictures.
       </div>

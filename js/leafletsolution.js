@@ -4,8 +4,6 @@ var Stamen_Watercolor = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/wa
   maxZoom: 16,
   ext: 'png'
 });
-
-
 var city = L.icon({
   iconUrl: 'images/City-Parliament-icon.png',
   iconSize:     [20, 20], // size of the icon
@@ -13,16 +11,16 @@ var city = L.icon({
   popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 
-var map = L.map('map2').setView([51.50874, 11.60156],4);
-map.addLayer(Stamen_Watercolor);
+var map2 = L.map('map2').setView([51.50874, 11.60156],4);
+map2.addLayer(Stamen_Watercolor);
 
-map.touchZoom.disable();
-map.doubleClickZoom.disable();
-map.scrollWheelZoom.disable();
+map2.touchZoom.disable();
+map2.doubleClickZoom.disable();
+map2.scrollWheelZoom.disable();
 
 
-map.on('click', function(e) {
-  L.marker(e.latlng).addTo(map).bindPopup(e.latlng+"<button id='confirm'>confirm:"+e.latlng+"</i></button>").openPopup();
+map2.on('click', function(e) {
+  L.marker(e.latlng).addTo(map2).bindPopup(e.latlng+"<button id='confirm'>confirm</button>").openPopup();
 });
 
 function confirm() {
@@ -30,12 +28,12 @@ function confirm() {
 }
 
 function endgame(){
-    L.marker(e.latlng,{icon: city}).addTo(map);
+    L.marker(e.latlng,{icon: city}).addTo(map2);
 }
 
 function left(){
-  map.setView([49.61071, -0.08789],4);  
+  map2.setView([49.61071, -0.08789],4);  
 }
 function right(){
-  map.setView([49.61071, 19.33594],4);  
+  map2.setView([49.61071, 19.33594],4);  
 }
