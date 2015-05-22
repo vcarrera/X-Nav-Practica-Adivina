@@ -27,7 +27,7 @@ function confirm() {
 
 }
 
-function endgame(){
+function solution(){
     L.marker(e.latlng,{icon: city}).addTo(map2);
 }
 

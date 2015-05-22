@@ -2,7 +2,9 @@ var sound=false;
 var juegosjson=["Capitales","Banderas", "Comida"];
 var photo= [];
 var locations=[];
-var gametime;
+var gametime=null;
+var level=0;
+
 
 //sound
 var audiotypes={
@@ -43,19 +45,18 @@ function changesound(){
 function loadLocations(apigames){
   $.getJSON('../juegos/'+apigames+'.json', function(d){
     for(var i=0; i<d.features.length; i++) {  
-      console.log("a:"+d.features[i].geometry.coordinates);
-      locations.push(d.features[i].geometry.coordinates);
-      console.log("b:"+d.features[i].properties.tag);
-      loadPhoto(d.features[i].properties.tag);
+      loadPhoto(d.features[i]);
     };
   });
 }
 
 function loadPhoto(location){
   var apiflickr='http://api.flickr.com/services/feeds/photos_public.gne?tags=';
-  $.getJSON( apiflickr+location+'&tagmode=any&format=json&jsoncallback=?', function(d1){
-	  photo.push(d1.items[0].media.m);
-	  console.log("c: "+location+": "+d1.items[0].media.m);
+  $.getJSON( apiflickr+location.properties.tag+'&tagmode=any&format=json&jsoncallback=?', function(d1){
+    console.log("a:"+location.geometry.coordinates);
+    locations.push(location.geometry.coordinates);
+    photo.push([location.properties.tag, d1.items[0].media.m]);
+    console.log("b: "+location.properties.tag+": "+d1.items[0].media.m);
   });
 }
 
@@ -78,6 +79,15 @@ function jumptogame(){
   window.location = '#game';
 }
 
+function levelnext(){
+  if (level < photo.length){
+    drawImage(photo[level++]);
+    localStorage.setItem("phase", level+1);
+  }else{
+    endgame();
+  } 
+}
+
 
 $(document).ready(function() {
   var psound = localStorage["sound"];  
@@ -88,25 +98,36 @@ $(document).ready(function() {
     selectgame();
   });
   $('#easy').click(function(){
-    gametime=10;
+    gametime=10000;
     localStorage.setItem("phase", 1);
+    localStorage.setItem("gametime", gametime);
+    level=0;
+    setInterval(levelnext(), gametime);
     jumptogame();
   });
   $('#medium').click(function(){
-    gametime=5;
+    gametime=5000;
     localStorage.setItem("phase", 1);
+    localStorage.setItem("gametime", gametime);
+    level=0;
     jumptogame();
   });
   $('#hard').click(function(){
-    gametime=3; 
+    gametime=3000; 
     localStorage.setItem("phase", 1);
+    localStorage.setItem("gametime", gametime);
+    level=0;
+    setInterval(levelnext(), gametime);
     jumptogame();
   });
   $('#continue').click(function(){
-    var phase = localStorage["phase"];
-    if (phase > 0)
+    var phase = parseInt(localStorage["phase"]);
+    var previotime =parseInt( localStorage["gametime"]);
+    if (phase > 0){
+      level=phase-1;
+      setInterval(levelnext(), previotime);
       jumptogame();
-    else
+    }else
       alert("NEED PLAY A GAME FIRST");
   }); 
 });

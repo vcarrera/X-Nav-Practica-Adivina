@@ -19,14 +19,16 @@
     <title>Adivina dónde está</title>
   </head>
   <body>
-    <!--miscelaneous-->
-    <div id="miscelaneous">
-      <button class="col-xs-2" id="helpbutton"><i class="fa fa-info-circle"></i></button>
+    <!--miscelaneous
+================================================== -->
+    <div id="miscelaneous" class="col-xs-12">
+      <button class="col-xs-2" id="helpbutton" onclick="location.href='#help'"><i class="fa fa-info-circle"></i></button>
       <button class="col-xs-2" id="audio" onclick="changesound()"><i class="fa fa-volume-up"></i></button>
       <audio class="col-xs-8" src="audio/Item Shop_0.mp3" loop controls>Around The World MSX-Snabisch</audio>
     </div>
-    <!--MENU-->
-    <menu id="menu">
+    <!--MENU
+================================================== -->
+    <menu id="menu" class="col-xs-12">
       <span class="hidden-xs github-fork-ribbon-wrapper left">
 	<span class="github-fork-ribbon">
 	  <a href="https://github.com/vcarrera/X-Nav-Practica-Adivina">Folder on GitHub</a>
@@ -46,11 +48,11 @@
       </div>
     </menu>
     
-    <!--JUEGO-->
-    <div id="game">
+    <!--JUEGO
+================================================== -->
+    <div id="game" class="col-xs-12">
       <div id="image" class="col-xs-12 col-sm-4 col-lg-4">
-      </output>
-	<div id="polaroid">
+	<div id="locationphoto">
 	</div>
 	<div id="window">
 	  <div id="gamemenu" class="col-xs-12 col-sm-12 col-lg-12">
@@ -60,27 +62,31 @@
 	</div>
       </div>
       <div id="gamemaptop" class="col-xs-12 col-sm-8 col-lg-8">
-	<button class="col-xs-12 hidden-sm hidden-lg" id="photos"> photos<i class="fa fa-camera"></i></button>
+	<button class="col-xs-12 hidden-sm hidden-lg" id="photos"> photos <i class="fa fa-camera"></i></button>
       </div>
       <div id="map" class="col-xs-12 col-sm-8 col-lg-8"></div>
       <div id="gamemapbottom" class="col-xs-12 col-sm-8 col-lg-8">
-	<button class="col-xs-6 hidden-sm hidden-lg" id="buttonmap"> map-left <i class="fa fa-step-backward"></i></button>
-	<button class="col-xs-6 hidden-sm hidden-lg" id="leftmap"> map-right <i class="fa fa-step-forward"></i></button>
+	<button class="col-xs-6 hidden-sm hidden-lg" id="leftmap"> map-left <i class="fa fa-step-backward"></i></button>
+	<button class="col-xs-6 hidden-sm hidden-lg" id="rightmap"> map-right <i class="fa fa-step-forward"></i></button>
       </div>
     </div>
     
-    <!--solve-->
-    <div id="solve">
+    <!--solve
+================================================== -->
+    <div id="solve" class="col-xs-12">
       <div id="endscore" class="col-xs-12 col-sm-4">
-	<div id="gamemenu" class="col-xs-12 col-sm-12 col-lg-12">
+	<div id="gamemenu2" class="col-xs-12">
 	  <button class="col-xs-6 " id="backphoto"> <i class="fa fa-arrow-left"></i></button>
 	  <button class="col-xs-6 " id="nextphoto"><i class="fa fa-arrow-right"></i></button>
-	  <button class="col-xs-6 col-sm-12 col-lg-12 back"> menu <i class="fa fa-reply" ></i></button>
+	  <button class="col-xs-12 back"> menu <i class="fa fa-reply" ></i></button>
 	</div>
       </div>
       <div id="map2" class="col-xs-12 col-sm-8 col-lg-8"></div>
     </div>
-    <div id="help">
+    
+    <!--others
+================================================== -->
+    <div id="help" class="col-xs-12">
       <!--HOW PLAY-->
       <div id="how">
 	<h2>How play:</h2>
