@@ -8,7 +8,6 @@
 html, body{ 
   width:100%;
   height:100%;
- 
 }
 
 .centrame
@@ -23,8 +22,10 @@ html, body{
 }
 
 #miscelaneous{
+    background:black;
     float: right;
     padding:5px;
+    z-index:99999;
 }
 
 #menu{

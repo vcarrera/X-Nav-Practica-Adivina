@@ -3,15 +3,19 @@
    height:100vh;
    background:green;
 }
-#locationphoto{
+#marco{
    position: relative;
    height:100vh;
    background:black;
    background-size: 100% 100%;
-   border:50vh;
-   top:0;
-   left:0;
-   z-index:10;
+   left:-2%;
+   z-index:10;   
+}
+#locationphoto{
+   width:200px;
+   height:200px;
+   background:black;
+   background-size: 100% 100%;
 }
 #window{
   position: absolute;
