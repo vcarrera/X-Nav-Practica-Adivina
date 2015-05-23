@@ -3,8 +3,9 @@ var ready=false;
 var juegosjson=["Capitales","Banderas", "Comida"];
 var photo= [];
 var locations=[];
-var gametime=null;
+var gametime;
 var level=0;
+var interval;
 /*
  * sound
  *=================================================================================================
@@ -91,27 +92,38 @@ function selectgame(){
   };
 };
 
-
-
 function jumptogame(){
   window.location = '#game';
 }
-
+function jumptomenu(){
+  window.clearInterval(intervalVariable)
+}
 function levelnext(){
   if (level < photo.length){ 
-    if (ready)
+    if (ready){
       drawImage(photo[level++]);
-    localStorage.setItem("phase", level+1);
+      localStorage.setItem("phase", level+1);
+    }
   }else{
     endgame();
   } 
 }
-
+function stargame(gametime){
+  localStorage.setItem("phase", 1);
+  localStorage.setItem("gametime", gametime);
+  level=0;
+  levelnext();
+  jumptogame();
+  clearInterval(interval);
+  interval=setInterval(function() {levelnext()}, gametime);
+}
+  
 function endgame(){
   $('#locationphoto').css("backgroundImage", "none");
   window.location = '#solve';
   level=0;
   localStorage.setItem("phase", 0);
+  clearInterval(interval);
 }
 
 $(document).ready(function() {
@@ -125,27 +137,16 @@ $(document).ready(function() {
     selectgame();
   });
   $('#easy').click(function(){
-    gametime=10000;
-    localStorage.setItem("phase", 1);
-    localStorage.setItem("gametime", gametime);
-    level=0;
-    setInterval(levelnext(), gametime);
-    jumptogame();
+    gametime=18000;
+    stargame(gametime);
   });
   $('#medium').click(function(){
-    gametime=5000;
-    localStorage.setItem("phase", 1);
-    localStorage.setItem("gametime", gametime);
-    level=0;
-    jumptogame();
+    gametime=12000;
+    stargame(gametime);
   });
   $('#hard').click(function(){
-    gametime=3000; 
-    localStorage.setItem("phase", 1);
-    localStorage.setItem("gametime", gametime);
-    level=0;
-    setInterval(levelnext(), gametime);
-    jumptogame();
+    gametime=6000; 
+    stargame(gametime);
   });
   $('#continue').click(function(){
     var phase = parseInt(localStorage["phase"]);
@@ -153,7 +154,6 @@ $(document).ready(function() {
     if (phase > 0){
       photo = JSON.parse(localStorage["photo"]);
       level=phase-1;
-      setInterval(levelnext(), previotime);
       jumptogame();
     }else
       alert("NEED A ACTIVE GAME");
