@@ -99,14 +99,14 @@ function selectgame(){
 };
 
 function jumptogame(){
-  window.location = '#game';
+  window.location = 'http://vcarrera.github.io/X-Nav-Practica-Adivina/#game';
 }
 function jumptomenu(){
   window.clearInterval(interval);
-  window.location = '#menu';
+  window.location = 'http://vcarrera.github.io/X-Nav-Practica-Adivina/#menu';
 }
 function jumptomap2(){
-  window.location = 'map2';
+  window.location = 'http://vcarrera.github.io/X-Nav-Practica-Adivina/map2';
 }
 function nextphoto(){
   drawImage(photo[level++]);
@@ -149,7 +149,7 @@ function stargame(gametime){
   
 function endgame(){
   $('#locationphoto').css("backgroundImage", "none");
-  window.location = '#solve';
+  window.location = 'http://vcarrera.github.io/X-Nav-Practica-Adivina/#solve';
   level=0;
   localStorage.setItem("phase", 0);
   clearInterval(interval);
