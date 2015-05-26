@@ -41,7 +41,7 @@ function ss_soundbits(sound){
     }
 } 
 
-var select  = ss_soundbits("../audio/Item Shop_1.mp3");
+var select  = ss_soundbits("audio/Item Shop_1.mp3");
 
 function changesound(){
     sound=!sound;
