@@ -148,6 +148,7 @@ function stargame(gametime){
 }
   
 function endgame(){
+ alert("juego terminado"+ points)
   $('#locationphoto').css("backgroundImage", "none");
   window.location = 'http://vcarrera.github.io/X-Nav-Practica-Adivina/#solve';
   localStorage.setItem("phase", 0);
