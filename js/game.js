@@ -150,7 +150,6 @@ function stargame(gametime){
 function endgame(){
   $('#locationphoto').css("backgroundImage", "none");
   window.location = 'http://vcarrera.github.io/X-Nav-Practica-Adivina/#solve';
-  level=0;
   localStorage.setItem("phase", 0);
   clearInterval(interval);
   drawImage2(photo[0]);
