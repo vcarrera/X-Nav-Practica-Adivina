@@ -42,10 +42,18 @@
 	<button class="col-xs-12 col-sm-12" id="easy">easy</button>
 	<button class="col-xs-12 col-sm-12" id="medium">medium</button>
 	<button class="col-xs-12 col-sm-12" id="hard">hard</button>
-	<button class="col-xs-12 col-sm-12" id="continue">continue</button>
+	<button class="col-xs-6 col-sm-6" id="continue">continue</button>
+	<button class="col-xs-6 col-sm-6" id="historybotton" onclick="location.href='#history'">history</button>
       </div>
     </menu>
-    
+     <!--history
+================================================== -->
+    <div id="history" class="col-xs-12">
+    <div id="modehistoy" class="col-xs-12 col-sm-4 centrame">
+	<button class="col-xs-12 col-sm-12 col-lg-12 back" onclick="location.href='#menu'"> menu <i class="fa fa-reply" ></i></button>
+	
+      </div>
+    </div>  
     <!--JUEGO
 ================================================== -->
     <div id="game" class="col-xs-12">
@@ -55,13 +63,19 @@
 	</div>
 	<div id="window">
 	  <div id="gamemenu" class="col-xs-12 col-sm-12 col-lg-12">
-	    <button class="col-xs-6 col-sm-12 col-lg-12 back" onclick="location.href='#menu'"> menu <i class="fa fa-reply" ></i></button>
-	    <button class="col-xs-6 hidden-sm hidden-lg" id="tomap"> map <i class="fa fa-plane"></i></button>
+	    <div id="panelpoints" >
+		Score: <span id="points"></span><br>
+		Distance:<span id="distance"></span><br>
+		Round: <span id="level"></span><br>
+	    </div>
+	    <button class="col-xs-12 col-sm-12 col-lg-12 back" id="salve"> salve to histoy <i class="fa fa-unlock-alt"></i></button>
+	    <button class="col-xs-6 col-sm-12 col-lg-12 back" onclick="jumptomenu();"> menu <i class="fa fa-reply" ></i></button>
+	    <button class="col-xs-6 hidden-sm hidden-lg" onclick="location.href='#gamemaptop'" > map <i class="fa fa-plane"></i></button>
 	  </div>
 	</div>
       </div>
       <div id="gamemaptop" class="col-xs-12 col-sm-8 col-lg-8">
-	<button class="col-xs-12 hidden-sm hidden-lg" id="photos"> photos <i class="fa fa-camera"></i></button>
+	<button class="col-xs-12 hidden-sm hidden-lg" onclick="location.href='#game'"> photos <i class="fa fa-camera"></i></button>
       </div>
       <div id="map" class="col-xs-12 col-sm-8 col-lg-8"></div>
       <div id="gamemapbottom" class="col-xs-12 col-sm-8 col-lg-8">
@@ -81,33 +95,26 @@
 	    </div>
 	</div>
 	<div id="gamemenu2" class="col-xs-12">
+	  <button class="col-xs-12 hidden-sm hidden-lg" id="solvemap" onclick="location.href='#map2'"> <i class="fa fa-plane"></i></i></button>
 	  <button class="col-xs-6 " id="backphoto"> <i class="fa fa-arrow-left"></i></button>
 	  <button class="col-xs-6 " id="nextphoto"><i class="fa fa-arrow-right"></i></button>
-	  <button class="col-xs-12 back" onclick="location.href='#menu'"> menu <i class="fa fa-reply" ></i></button>
+	  <button class="col-xs-12 back" onclick="jumptomenu();"> menu <i class="fa fa-reply" ></i></button>
 	</div>
       </div>
       <div id="map2" class="col-xs-12 col-sm-8 col-lg-8"></div>
     </div>
-    
     <!--others
 ================================================== -->
     <div id="help" class="col-xs-12">
       <!--HOW PLAY-->
-      <div id="how">
+      <div id="how" class="centrame col-lg-5">
 	<h2>How play:</h2>
 	<h3>Adivina dónde está<br>(Find where is it)</h3>
-	Is a geolocalization game.<br>
-	The game show a photo, and you have to select the city of the picture in the map.<br>
-	There are 3 diferents dificulties: easy , medium and hard; this change the time for choose the city.<br>
+	<p>Is a geolocalization game.
+	The game show a photo, and you have to select the city of the picture in the map.
+	There are 3 diferents dificulties: easy , medium and hard; this change the time for choose the city.</p>
 	The type of game  only change the class of the pictures.
       </div>
-      <!--CREDITOS-->
-      <div id="credits">
-	<i class="fa fa-flickr"></i> <a href="https://www.flickr.com">Flickr</a> 
-	<i class="fa fa-leaf"></i> Leaflet http://leaflet-extras.github.io/leaflet-providers/preview/
-	<i class="fa fa-github"></i> Github
-	<img src="images/City-Parliament-icon.png" style="width:20px;height:20px"/> <a href="http://www.iconarchive.com/show/ios7-icons-by-icons8/City-Parliament-icon.html"> City-Parliament-icon </a>
-      </div>  
     </div>   
     <!--Javascript-->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>

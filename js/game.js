@@ -1,11 +1,16 @@
 var sound=false;
 var ready=false;
 var juegosjson=["Capitales","Banderas", "Comida"];
+var state;
 var photo= [];
-var locations=[];
 var gametime;
 var level=0;
+var count=0;
 var interval;
+var typeofgame;
+var difficult;
+var start=false;
+var markers;
 /*
  * sound
  *=================================================================================================
@@ -36,7 +41,7 @@ function ss_soundbits(sound){
     }
 } 
 
-var select  = ss_soundbits("../audio/magical_1_0.ogg");
+var select  = ss_soundbits("../audio/Item Shop_1.mp3");
 
 function changesound(){
     sound=!sound;
@@ -64,8 +69,7 @@ function loadPhoto(location){
   var apiflickr='http://api.flickr.com/services/feeds/photos_public.gne?tags=';
   $.getJSON( apiflickr+location.properties.tag+'&tagmode=any&format=json&jsoncallback=?', function(d1){
     console.log("a:"+location.geometry.coordinates);
-    locations.push(location.geometry.coordinates);
-    photo.push([location.properties.tag, d1.items[0].media.m]);
+    photo.push([location.properties.tag, d1.items[0].media.m,location.properties.name, location.geometry.coordinates]);
     console.log("b: "+location.properties.tag+": "+d1.items[0].media.m);
     ready=true;
     localStorage.setItem("photo", JSON.stringify(photo));
@@ -79,16 +83,18 @@ function loadPhoto(location){
  */
 function selectgame(){
   photo= [];
-  locations=[];
   switch($('#typegame :selected').text()){
     case "Flags":
       loadLocations(juegosjson[1]);
+      typeofgame=1;
       break;
     case "Food":
       loadLocations(juegosjson[2]);
+      typeofgame=2;
       break;
     default:
       loadLocations(juegosjson[0]);
+      typeofgame=0;
   };
 };
 
@@ -96,13 +102,35 @@ function jumptogame(){
   window.location = '#game';
 }
 function jumptomenu(){
-  window.clearInterval(intervalVariable)
+  window.clearInterval(interval);
+  window.location = '#menu';
 }
+function jumptomap2(){
+  window.location = 'map2';
+}
+function nextphoto(){
+  drawImage(photo[level++]);
+}
+
+function nextphoto2(){
+  drawImage2(photo[++count]);
+}
+
+function prevphoto2(){
+  drawImage2(photo[--count]);
+}
+
 function levelnext(){
   if (level < photo.length){ 
     if (ready){
-      drawImage(photo[level++]);
+      if (start)
+	map.removeLayer(markers);
+      nextphoto();
       localStorage.setItem("phase", level+1);
+      $("#level").html(level+' / '+photo.length);
+      clearInterval(interval);
+      interval=setInterval(function() {levelnext()}, gametime);
+      jumptogame();
     }
   }else{
     endgame();
@@ -111,6 +139,7 @@ function levelnext(){
 function stargame(gametime){
   localStorage.setItem("phase", 1);
   localStorage.setItem("gametime", gametime);
+  $("#points").html("0");
   level=0;
   levelnext();
   jumptogame();
@@ -124,7 +153,33 @@ function endgame(){
   level=0;
   localStorage.setItem("phase", 0);
   clearInterval(interval);
+  drawImage2(photo[0]);
+  salve();
 }
+
+function salve(){
+  var gamename=juegosjson[typeofgame]+" "+level;
+  var date=new Date();
+  console.log(juegosjson[typeofgame]+" "+level+"->"+points);
+  state={
+	  "points":points,
+	  "level" : level,
+	  "difficult" : difficult,
+	  "photos": photo,
+	  "name":date
+  };
+  history.pushState(state ,null,"game=" + juegosjson[typeofgame]+" "+level);
+  $("#modehistoy").append("<button onclick='revert("+history.length+");'>"+gamename+" "+difficult+" "+date+ " "+points+" points</button>");
+}
+
+function revert(index){
+  history.go(index-history.length-1);
+  points=state.points;
+  level=state.level;
+  difficult=state.difficult;
+  photo=state.photos;
+}
+
 
 $(document).ready(function() {
   selectgame();
@@ -138,14 +193,17 @@ $(document).ready(function() {
   });
   $('#easy').click(function(){
     gametime=18000;
+    difficult="easy";
     stargame(gametime);
   });
   $('#medium').click(function(){
     gametime=12000;
+    difficult="medium";
     stargame(gametime);
   });
   $('#hard').click(function(){
     gametime=6000; 
+    difficult="hard";
     stargame(gametime);
   });
   $('#continue').click(function(){
@@ -158,6 +216,10 @@ $(document).ready(function() {
     }else
       alert("NEED A ACTIVE GAME");
   }); 
+  $("#salve").click(function(){
+    salve();
+  });
+  
   $('#help').click(function(){
       window.location = '#menu';
   });
@@ -167,6 +229,7 @@ $(document).ready(function() {
  * MAPA JUEGO
  *=================================================================================================
  */
+
 var points=0;
 var position;
 var Esri_WorldTopoMap = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
@@ -182,14 +245,21 @@ map.scrollWheelZoom.disable();
 map.on('click', function(e) {
   if (sound)
     select.playclip();
-  L.marker(e.latlng).addTo(map).bindPopup(e.latlng+"<button id='confirm'>confirm</button>").openPopup();
+  markers=L.marker(e.latlng).addTo(map).bindPopup(e.latlng+"<button id='confirm' onclick='confirm();'>confirm</button>").openPopup();
   position=e.latlng;
+  start=true;
 });
 
 function confirm() {
-  var laux = new L.LatLng(locations[level][0], locations[level][1]);
-  points+=position.distanceTo(laux)*level;
-}
+  var locationpos=photo[level-1][3];
+  console.log (locationpos);
+  var laux = new L.LatLng(locationpos[0], locationpos[1]);
+  var distance = position.distanceTo(laux);
+  points+=distance*level;
+  $("#points").html(Math.round(points));
+  $("#distance").html (Math.round(distance/1000));
+  levelnext();
+};
 
 function left1(){
   var location = new L.LatLng(49.61071, -0.08789);
@@ -208,17 +278,32 @@ $('#rightmap').click(function(){
   right1();
 });
 
+$('#nextphoto').click(function(){
+  if (count < photo.length-1)
+    nextphoto2();
+});
+$('#backphoto').click(function(){
+  if (count > 0)
+    prevphoto2();
+});
 
 function drawImage(src){
   console.log("c:"+src[0]);
   $('#locationphoto').css("backgroundImage", "url(" + src[1]+ ")");
-  $('#locationphoto2').html('<figure><img src=' + src[1] + '/><figcaption>'+src[0]+'</figcaption></figure>');
+}
+
+function drawImage2(src){
+  console.log("c:"+src[0]);
+  $('#locationphoto2').html('<figure><img src=' + src[1] + '/><figcaption>'+src[2]+'</figcaption></figure>');
+  var laux = new L.LatLng(photo[count][3][0], photo[count][3][1])
+  solution(laux);
 }
 
 /*
  * MAPA SOLUCION
  *=================================================================================================
  */
+var pointstart=false;
 var Stamen_Watercolor = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png', {
   subdomains: 'abcd',
   minZoom: 1,
@@ -232,30 +317,21 @@ var city = L.icon({
   popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 
-var map2 = L.map('map2').setView([51.50874, 11.60156],4);
+var map2 = L.map('map2').setView([51.50874, 11.60156],3);
 map2.addLayer(Stamen_Watercolor);
 
 map2.touchZoom.disable();
 map2.doubleClickZoom.disable();
 map2.scrollWheelZoom.disable();
 
+function solution(point){
+    if (pointstart)
+      map2.removeLayer(markers);
+    pointstart=true;
+    markers=L.marker(point,{icon: city}).addTo(map2);
+    map2.panTo(point);
+}
 
 map2.on('click', function(e) {
-  L.marker(e.latlng).addTo(map2).bindPopup(e.latlng+"<button id='confirm'>confirm</button>").openPopup();
+    window.location = '#solve';
 });
-
-function confirm() {
-
-}
-
-function solution(){
-    L.marker(e.latlng,{icon: city}).addTo(map2);
-}
-
-function left(){
-  map2.setView([49.61071, -0.08789],4);  
-}
-function right(){
-  map2.setView([49.61071, 19.33594],4);  
-}
-

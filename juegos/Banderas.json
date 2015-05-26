@@ -1,33 +1,49 @@
-{ "type": "FeatureCollection",
-"features": [
-{ "type": "Feature",
-  "geometry": {"type": "Point", "coordinates": [102.0, 0.5]},
-  "properties": {"prop0": "value0"}
-  },
-{ "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [
-      [102.0, 0.0]
-      ]
-    },
-  "properties": {
-    "name": "value0",
-    "prop1": 0.0
-    }
-  },
-{ "type": "Feature",
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [
-	[ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0],
-	  [100.0, 1.0], [100.0, 0.0] ]
-	]
-    },
-    "properties": {
-      "prop0": "value0",
-      "prop1": {"this": "that"}
-      }
-    }
-  ]
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    52.4694,
+                    13.35938
+                ]
+            },
+            "properties": {
+                "name": "Berlin - bandera alemana",
+                "tag": "germany flag"
+
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    48.73446,
+                    2.46094
+                ]
+            },
+            "properties": {
+                "name": "Paris - bandera francesa",
+                "tag": "france flag"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                   40.43022,
+                    -3.86719
+                ]
+            },
+            "properties": {
+                "name": "Madrid - bandera española",
+                "tag": "spain flag"
+            }
+        }
+    ]
+        
 }

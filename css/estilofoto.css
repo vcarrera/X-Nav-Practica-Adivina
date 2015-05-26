@@ -29,7 +29,26 @@
   padding:0;
   margin:0;
 }
+
+#panelpoints{
+ height:85px;
+ background:white;
+ border-radius:20px;
+ border-color:red;
+ border-size:5px;
+ border-style:solid;
+ padding:12px;
+ font: 120% sans-serif;
+ opacity: 0.5;
+}
+
 #gamemenu{
   position: absolute;
   z-index:30; 
+  bottom:5px;
+}
+
+#gamemenu button{
+  height:10vh;
+  opacity: 0.8;
 }

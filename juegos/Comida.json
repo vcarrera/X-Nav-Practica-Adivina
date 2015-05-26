@@ -1,24 +1,49 @@
-{ "type": "FeatureCollection",
-"features": [
 {
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [125.6, 10.1]
-  },
-  "properties": {
-    "name": "Dinagat Islands"
-  }
-},
-{
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [125.6, 10.1]
-  },
-  "properties": {
-    "name": "Dinagat Islands"
-  }
-}
-  ]
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    52.4694,
+                    13.35938
+                ]
+            },
+            "properties": {
+                "name": "Berlin - salchicas con curry",
+                "tag": "currywurst"
+
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    48.73446,
+                    2.46094
+                ]
+            },
+            "properties": {
+                "name": "Paris - croassant",
+                "tag": "croassant"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                   40.43022,
+                    -3.86719
+                ]
+            },
+            "properties": {
+                "name": "Madrid - tortilla de patatas",
+                "tag": "tortilla patatas"
+            }
+        }
+    ]
+        
 }

@@ -8,6 +8,11 @@
     opacity: 0.8;
     text-align:center;
 }
+#modehistoy button{
+    height:15vh;
+    opacity: 0.8;
+    text-align:center;
+}
 
 .github-fork-ribbon-wrapper.left {
     left: 0;

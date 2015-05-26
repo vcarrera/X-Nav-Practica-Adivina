@@ -73,7 +73,7 @@ background-color: rgba(222,220,198,0.7);
 left:150px;
 top: -15px;
 width: 55px;
-height: 25px;
+height: auto;
 -webkit-transform: rotate(12deg);
 -moz-transform: rotate(12deg);
 -o-transform: rotate(12deg);
@@ -84,7 +84,7 @@ text-align:center;
 font-family: 'Reenie Beanie', cursive; /*Reenie Beanie is available through Google Webfonts http://code.google.com/webfonts/specimen/Reenie+Beanie*/
 font-size:1.3em;
 max-width:200px;
-height:20px;
+height:auto;
 color:#454f40;
 letter-spacing:0.09em;
 }

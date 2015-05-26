@@ -6,13 +6,13 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -3.6903750000000173,
-                    40.451585
+                    52.4694,
+                    13.35938
                 ]
             },
             "properties": {
-                "name": "Santiago Bernabeu",
-                "tag": "Santiago Bernabeu"
+                "name": "Berlin",
+                "tag": "puerta de brandenburgo"
 
             }
         },
@@ -21,13 +21,13 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    11.624706999999944,
-                    48.2188
+                    48.73446,
+                    2.46094
                 ]
             },
             "properties": {
-                "name": "Allianz Arena",
-                "tag": "Allianz arena"
+                "name": "Paris",
+                "tag": "torre eiffel"
             }
         },
         {
@@ -35,13 +35,13 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -2.960829999999987,
-                    53.430829
+                   40.43022,
+                    -3.86719
                 ]
             },
             "properties": {
-                "name": "Anfield",
-                "tag": "Anfield,Liverpool"
+                "name": "Madrid",
+                "tag": "oso y madroño"
             }
         }
     ]
