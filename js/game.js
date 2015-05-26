@@ -58,7 +58,7 @@ function changesound(){
  *=================================================================================================
  */
 function loadLocations(apigames){
-  $.getJSON('../juegos/'+apigames+'.json', function(d){
+  $.getJSON('/juegos/'+apigames+'.json', function(d){
     for(var i=0; i<d.features.length; i++) {  
       loadPhoto(d.features[i]);
     };
